@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+int main() {
+    
+int randomNumber = 9;
+int userGuess;
+
+
+while (userGuess != randomNumber) {
+        cout << "Enter your guess: ";
+        cin >> userGuess;
+        
+        if (userGuess > randomNumber) {
+            cout << "Too high! Try again." << endl;
+        } else if (userGuess < randomNumber) {
+            cout << "Too low! Try again." << endl;
+        } else {
+            cout << "Congratulations! You guessed the correct number." << endl;
+        }
+    }
+    return 0;
+}

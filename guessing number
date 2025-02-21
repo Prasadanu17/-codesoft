@@ -3,17 +3,17 @@
 using namespace std;
 int main() {
     
-int randomNumber = 9;
-int userGuess;
+int number = 9;
+int Guessno;
 
 
-while (userGuess != randomNumber) {
+while (guessno != number) {
         cout << "Enter your guess: ";
-        cin >> userGuess;
+        cin >> userno;
         
-        if (userGuess > randomNumber) {
+        if (userno > number) {
             cout << "Too high! Try again." << endl;
-        } else if (userGuess < randomNumber) {
+        } else if (Guessno < number) {
             cout << "Too low! Try again." << endl;
         } else {
             cout << "Congratulations! You guessed the correct number." << endl;

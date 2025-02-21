@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+int currentPlayer;
+char currentMarker;
+char  number[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
+
+void drawBoard() {
+    cout << " " << number[0][0] << " | " << number[0][1] << " | " << number[0][2] << " \n";
+    cout << "---|---|---\n";
+    cout << " " << number[1][0] << " | " << number[1][1] << " | " << number[1][2] << " \n";
+    cout << "---|---|---\n";
+    cout << " " << number[2][0] << " | " << number[2][1] << " | " << number[2][2] << " \n";
+}
+
+bool placingslot(int slot) {
+    int row = (slot - 1) / 3;
+    int col = (slot - 1) % 3;
+
+    if (number[row][col] != 'X' && number[row][col] != 'O') {
+        number[row][col] = currentMarker;
+        return true;
+    }
+    return false;
+}
+
+int won() {
+    for (int i = 0; i < 3; i++) {
+        if (number[i][0] == number[i][1] && number[i][1] == number[i][2])
+            return currentPlayer;
+        if (number[0][i] == number[1][i] && number[1][i] == number[2][i])
+            return currentPlayer;
+    }
+    if (number[0][0] == number[1][1] && number[1][1] == number[2][2])
+        return currentPlayer;
+    if (number[0][2] == number[1][1] && number[1][1] == number[2][0])
+        return currentPlayer;
+    return 0;
+}
+
+void swapPlayer() {
+    if (currentMarker == 'X') {
+        currentMarker = 'O';
+    } else {
+        currentMarker = 'X';
+    }
+    currentPlayer = (currentPlayer == 1) ? 2 : 1;
+}
+
+void game() {
+    cout<<"TIC-TAC-TOE"<<endl;
+    cout << "Player 1, choose your marker (X or O): ";
+    cin >> currentMarker;
+    currentPlayer = 1;
+    drawBoard();
+
+    int playerWon;
+    for (int i = 0; i < 9; i++) {
+        cout << "It's Player " << currentPlayer << "'s turn. Enter your slot: ";
+        int slot;
+        cin >> slot;
+
+        if (slot < 1 || slot > 9) {
+            cout << "Invalid slot, try again.\n";
+            i--;
+            continue;
+        }
+        if (!placingslot(slot)) {
+            cout << "Slot occupied! Try again.\n";
+            i--;
+            continue;
+        }
+        drawBoard();
+        playerWon = won();
+
+        if (playerWon == 1) {
+            cout << "Player 1 wins!\n";
+            return;
+        }
+        if (playerWon == 2) {
+            cout << "Player 2 wins!\n";
+            return;
+        }
+        swapPlayer();
+    }
+    cout << "It's a tie!\n";
+}
+
+int main() {
+    game();
+    return 0;
+}
+

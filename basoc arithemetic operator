@@ -1,0 +1,32 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+
+using namespace std;
+int main() {
+    
+char input;
+float num1,num2;
+cout<<"BASIC ARITHMETIC OPERATIONS.."<<endl;
+cout<<"enter the opertor..  '+', '-',  '*',  '/':";
+cin>>input;
+cout<<"enter two user input:";
+cin>>num1>>num2;
+switch(input){
+    case'-':
+    cout<<"subtraction  is :"<<num1-num2;
+    break;
+    case'+':
+    cout<<"addition is :"<<num1+num2;
+    break;
+    case'*':
+    cout<<"multiplication is"<<num1*num2;
+    break;
+    case'/':
+    cout<<"division is:"<<num1<<num2;
+    
+    default:
+    cout<<"enter operator is not correct";
+    break;
+}
+    return 0;
+}
